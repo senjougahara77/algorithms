@@ -1,0 +1,25 @@
+//两种经典排序算法
+//快速排序 quicksort
+public static void quicksort(int[] a, int begin, int end) {
+    if (end <= begin) return a;
+    int pivot = partition (a, begin, end);
+    quicksort(a, begin, pivot - 1);
+    quicksort(a, pivot + 1, end);
+}
+
+public int partiton(int[] a, int begin, int end) {
+    int pivot = end;
+    int counter = begin;
+    for (int i = begin; i < end; i++) {
+      if (a[i] < a[pivot]) {
+        int temp = a[i];
+        a[i] = a[counter];
+        a[counter] = temp;
+        counter++;
+      }
+    }
+    int temp = a[pivot];
+    a[pivot] = a[counter];
+    a[counter] = temp;
+    return counter;
+}
